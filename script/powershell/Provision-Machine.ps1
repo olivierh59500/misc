@@ -71,10 +71,10 @@ Begin {
 		if ($DirectoryPath -gt 0 -and $KeyName -gt 0 -and $KeyValue -ne $Null) {
 			try {
 				if ($CreateSubdirectory) {
-					New-Item -Path $DirectoryPath -ItemType Directory -Force > $Null
+					New-Item -Path $DirectoryPath -ItemType Directory -Force | Out-Null
 				}
 
-				New-ItemProperty -Path $DirectoryPath -Name $KeyName -Value $KeyValue -Force > $Null
+				New-ItemProperty -Path $DirectoryPath -Name $KeyName -Value $KeyValue -Force | Out-Null
 				return "Successfully manipulated registry."
 			}
 
