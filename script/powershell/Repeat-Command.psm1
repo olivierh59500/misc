@@ -1,11 +1,11 @@
 function Repeat-Command {
-
+	
 	<#
 		.SYNOPSIS
 		A PowerShell variant of the 'watch' Unix command, used for continuously invoking commands every specified amount of seconds.
-
-        .EXAMPLE
-	    Repeat-Command 'ls'
+		
+		.EXAMPLE
+		Repeat-Command 'ls'
 		Invokes the specified command, ls, every second.
 
 		.EXAMPLE
@@ -62,11 +62,9 @@ function Repeat-Command {
 			
 			try {
 				Invoke-Expression $Command | Out-Default
-				
 			}
 			
 			catch [Exception] {
-				
 				Write-Host -ForegroundColor Red ("ERROR: " + $_.Exception.Message)
 				
 				if ($TerminateIfError -eq $True) {
@@ -80,5 +78,5 @@ function Repeat-Command {
 		until (
 			$Null
 		)
-    }
+	}
 }
