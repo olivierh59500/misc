@@ -37,7 +37,7 @@ Param (
 	[Parameter(Mandatory=$True)]
 	[alias("u")]
 	[String]
-	$DomainAdmin,
+	$DomainAdminUserName,
 	
 	[Parameter(Mandatory=$False)]
 	[alias("p")]
@@ -59,8 +59,8 @@ Begin {
 	
 	# ---- VARIABLES ----
 	
-	$Log_FileName = "provisioning_$($DomainName)_" + $(Get-Date -Format "yyyy-MM-dd_HH-mm-ss") + ".log"
-	$Log_FilePath = "$($env:Temp)\$($Log_FileName)"
+	$Log_FileName = "provisioning_" + $DomainName + "_" + (Get-Date -Format "yyyy-MM-dd_HH-mm-ss") + ".log"
+	$Log_FilePath = $env:Temp + "\" + $Log_FileName
 
 	# ---- FUNCTIONS ----
 	
@@ -88,7 +88,7 @@ Begin {
 		}
 	}
 
-	function ReportStatus ([string]$Type, [string]$Message, [switch]$NoWhitespace) {
+	function ReportStatus ([String]$Type, [String]$Message, [Switch]$NoWhitespace) {
 
 		switch ($Type) {
 			Step {
@@ -122,7 +122,7 @@ Begin {
 		}
 
 		if (!($NoWhitespace)) {
-			$Output.Set_Item("Object", "`n$($Output['Object'])`n") # Leaves whitespace before and after output.
+			$Output.Set_Item("Object", "`n" + ($Output['Object']) + "`n") # Leaves whitespace before and after output.
 		}
 		
 		Write-Host @Output
@@ -159,12 +159,12 @@ Begin {
 	# ---- PASSWORD ENCRYPTION ----
 	
 	if ($DomainAdminPassword -match "^$") {
-		$DomainAdminCredentials = $DomainAdmin
+		$DomainAdminCredentials = $DomainAdminUserName
 	}
 	
 	else {
 		$DomainAdminEncryptedPassword = (ConvertTo-SecureString -String $DomainAdminPassword -AsPlainText -Force)
-		$DomainAdminCredentials = (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $DomainAdmin, $DomainAdminEncryptedPassword)
+		$DomainAdminCredentials = (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $DomainAdminUserName, $DomainAdminEncryptedPassword)
 	}
 }
 
@@ -185,20 +185,22 @@ Process {
 	# ---- START OF RDP SERVICE ----
 
 	ReportStatus -Type Step -Message "Enabling RDP Server"
+	
 	AddRegistryKey `
-		-DirectoryPath "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server" `
-		-KeyName "fDenyTSConnections" `
-		-KeyValue 0
+	-DirectoryPath "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server" `
+	-KeyName "fDenyTSConnections" `
+	-KeyValue 0
 
 	# ---- DRIVER INSTALLATIONS ----
 
 	if ($DriverDirectory) {
 		ReportStatus -Type Step -Message "Disabling Driver Verification"
+		
 		AddRegistryKey `
-			-DirectoryPath "HKCU:\Software\Policies\Microsoft\Windows NT\Driver Signing" `
-			-KeyName "BehaviorOnFailedVerify" `
-			-KeyValue 0 `
-			-CreateSubdirectory
+		-DirectoryPath "HKCU:\Software\Policies\Microsoft\Windows NT\Driver Signing" `
+		-KeyName "BehaviorOnFailedVerify" `
+		-KeyValue 0 `
+		-CreateSubdirectory
 
 		ReportStatus -Type Step -Message "Installing Drivers"
 		
@@ -221,11 +223,11 @@ Process {
 				)
 				
 				AddRegistryKey `
-					-DirectoryPath "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\UnattendSettings\PnPUnattend\DriverPaths\1" `
-					-KeyName "Path" `
-					-KeyValue $MachineSpecificDriverSubdirectories.FullPath `
-					-CreateSubdirectory `
-					> $Null
+				-DirectoryPath "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\UnattendSettings\PnPUnattend\DriverPaths\1" `
+				-KeyName "Path" `
+				-KeyValue $MachineSpecificDriverSubdirectories.FullPath `
+				-CreateSubdirectory `
+				| Out-Null
 				
 				& "$($env:SystemRoot)\System32\PnpUnattend.exe" AuditSystem /L 2>&1 | Out-Default
 			}
@@ -272,7 +274,7 @@ Process {
 	# ---- END OF DIAGNOSTIC LOGGING ----
 
 	try {
-		Stop-Transcript > $Null
+		Stop-Transcript | Out-Null
 	}
 
 	catch [Exception] {}
