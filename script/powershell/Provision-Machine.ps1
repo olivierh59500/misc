@@ -79,7 +79,7 @@ Begin {
 			}
 
 			catch {
-				Write-Host -ForegroundColor Red "ERROR: Could not manipulate registry due to specific error. Details:" + $Error[0]
+				Write-Host -ForegroundColor Red ("ERROR: Could not manipulate registry due to specific error. Details:" + $Error[0])
 			}
 		}
 
@@ -152,7 +152,7 @@ Begin {
 		}
 		
 		catch [Exception] {
-			Write-Host -ForegroundColor Red "ERROR: An error occurred when generating driver subdirectories. Details: " + $Error[0]
+			Write-Host -ForegroundColor Red ("ERROR: An error occurred when generating driver subdirectories. Details: " + $Error[0])
 		}
 	}
 	
