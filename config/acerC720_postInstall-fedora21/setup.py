@@ -3,19 +3,18 @@
 # Ensure to run this particular script as root.
 
 def main():
-
 	import os
 	import shutil
 	import sys
 	
 	files = {
-		'50-cros-touchpad.conf'		: '/etc/X11/xorg.conf.d',
-		'cros-acpi-wakeup.conf'		: '/etc/tmpfiles.d',
-		'cros-sound-suspend.sh'		: '/usr/lib/systemd/system-sleep',
-		'disable-touchpad-wakeup.conf'	: '/etc/tmpfiles.d'
+		'50-cros-touchpad.conf'        : '/etc/X11/xorg.conf.d',
+		'cros-acpi-wakeup.conf'        : '/etc/tmpfiles.d',
+		'cros-sound-suspend.sh'        : '/usr/lib/systemd/system-sleep',
+		'disable-touchpad-wakeup.conf' : '/etc/tmpfiles.d'
 	}
 	
-	grub_configFile = "/etc/default/grub"
+	grub_configFile     = "/etc/default/grub"
 	grub_bootParameters = 'GRUB_CMDLINE_LINUX_DEFAULT="quiet splash tpm_tis.force=1"'
 
 	# Copies configuration files and scripts to their respective directory.
@@ -44,8 +43,8 @@ def main():
 	try:
 		print('Adding a specific boot parameter to %s...' % grub_configFile)
 		
-		with open(grub_configFile, "a") as myfile:
-			myfile.write("\n%s" % grub_bootParameters)
+		with open(grub_configFile, 'a') as myfile:
+			myfile.write('\n%s' % grub_bootParameters)
 			print('WARN: Inspect "%s" before generating a grub2 configuration file.' % grub_configFile)
 	except OSError as why:
 		print('ERROR: Could not edit "%s". Details: %s.' % (grub_configFile, why), file=sys.stderr)
@@ -57,4 +56,3 @@ def main():
 
 if __name__ == '__main__':
 	main()
-
