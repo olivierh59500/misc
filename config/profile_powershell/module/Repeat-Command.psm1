@@ -46,9 +46,9 @@ function Repeat-Command {
 	)
 
 	Begin {
-		$HeadsUpDisplay_Text       = "Repeat-Command: '" + $Command + "' every " + $Seconds + " second(s)"
-		$HeadsUpDisplay_Separator  = "-" * $HeadsUpDisplay_Text.Length + "`n"
-		$HeadsUpDisplay            = @($HeadsUpDisplay_Text, $HeadsUpDisplay_Separator)
+		$HeadsUpDisplay_Text      = "Repeat-Command: '" + $Command + "' every " + $Seconds + " second(s)"
+		$HeadsUpDisplay_Separator = "-" * $HeadsUpDisplay_Text.Length + "`n"
+		$HeadsUpDisplay           = @($HeadsUpDisplay_Text, $HeadsUpDisplay_Separator)
 
 		$Host.UI.RawUI.WindowTitle = $Host.UI.RawUI.WindowTitle + " (Repeat-Command)"
 	}
