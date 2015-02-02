@@ -1,7 +1,7 @@
 
 $ErrorActionPreference = "Stop"
 
-function Initialize-Session {
+function Initiate-Session {
 
 	$SessionDirectoryPath = $PSScriptRoot
 #	$ConfigDirectoryPath  = $SessionDirectoryPath + "\config" <-- Remaining for future implementation.
@@ -95,4 +95,4 @@ function Initialize-Session {
 	}
 }
 
-Initalize-Session
+Initiate-Session
