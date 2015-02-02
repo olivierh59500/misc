@@ -42,7 +42,7 @@ function Initiate-Session {
 		[ArrayList]$Prompt = [Ordered]@{
 			"`nPS "                                                   = "Cyan"
 			"["                                                       = "White"
-			($env:UserName + '@' + $env:ComputerName.ToLower() + " ") = "Cyan"
+			($env:UserName + "@" + $env:ComputerName.ToLower() + " ") = "Cyan"
 			(Get-Location).ProviderPath                               = "Red"
 			"]"                                                       = "White"
 		}
