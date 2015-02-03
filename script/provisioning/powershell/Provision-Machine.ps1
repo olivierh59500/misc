@@ -1,7 +1,6 @@
 <#
 	.NOTES
 	Provision-Machine Script
-	Last Modification: 2015-01-03
 	Author: Steven Peguero
 	
 	.SYNOPSIS
@@ -93,7 +92,7 @@ Begin {
 		switch ($Type) {
 			Step {
 				$Output = @{
-					"Object" = $Message + "..."
+					"Object"          = $Message + "..."
 					"BackgroundColor" = "Yellow"
 					"ForegroundColor" = "Black"
 				}
@@ -101,7 +100,7 @@ Begin {
 			
 			Error {
 				$Output = @{
-					"Object" = "ERROR: " + $Message
+					"Object"          = "ERROR: " + $Message
 					"BackgroundColor" = "Black"
 					"ForegroundColor" = "Red"
 				}
@@ -109,7 +108,7 @@ Begin {
 
 			Default {
 				$Output = @{
-					"Object" = $Message
+					"Object"          = $Message
 					"BackgroundColor" = $Host.UI.RawUi.BackgroundColor
 					"ForegroundColor" = $Host.UI.RawUi.ForegroundColor
 				}
@@ -131,21 +130,21 @@ Begin {
 	function GenerateSpecificDriverSubdirectories ([String]$RootDirectory) {
 	
 		try {
-			$CurrentMachine_ModelNumber = @(Get-WmiObject -Class Win32_ComputerSystem)[0].Model -Replace ' ',''
-			$CurrentMachine_OSVersion = (Get-WmiObject -Class Win32_OperatingSystem).Version
+			$CurrentMachine_ModelNumber    = @(Get-WmiObject -Class Win32_ComputerSystem)[0].Model -Replace ' ',''
+			$CurrentMachine_OSVersion      = (Get-WmiObject -Class Win32_OperatingSystem).Version
 			$CurrentMachine_OSArchitecture = (Get-WmiObject -Class Win32_OperatingSystem).OSArchitecture
 			
-			$FullPath = $RootDirectory + "\"
+			$FullPath  = $RootDirectory + "\"
 			$FullPath += $CurrentMachine_ModelNumber + "\"
 			$FullPath += $CurrentMachine_OSVersion + "\"
 			$FullPath += $CurrentMachine_OSArchitecture
 			
 			$GeneratedDriverSubdirectories = @{
-				"RootDirectory" = $RootDirectory
-				"ModelNumber" = $CurrentMachine_ModelNumber
-				"OSVersion" = $CurrentMachine_OSVersion
+				"RootDirectory"  = $RootDirectory
+				"ModelNumber"    = $CurrentMachine_ModelNumber
+				"OSVersion"      = $CurrentMachine_OSVersion
 				"OSArchitecture" = $CurrentMachine_OSArchitecture
-				"FullPath" = $FullPath
+				"FullPath"       = $FullPath
 			}
 			
 			return $GeneratedDriverSubdirectories
@@ -164,7 +163,7 @@ Begin {
 	
 	else {
 		$DomainAdminEncryptedPassword = (ConvertTo-SecureString -String $DomainAdminPassword -AsPlainText -Force)
-		$DomainAdminCredentials = (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $DomainAdminUserName, $DomainAdminEncryptedPassword)
+		$DomainAdminCredentials       = (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $DomainAdminUserName, $DomainAdminEncryptedPassword)
 	}
 }
 
