@@ -14,7 +14,7 @@ def main():
 		'disable-touchpad-wakeup.conf' : '/etc/tmpfiles.d'
 	}
 	
-	grub_configFile     = "/etc/default/grub"
+	grub_configFile     = '/etc/default/grub'
 	grub_bootParameters = 'GRUB_CMDLINE_LINUX_DEFAULT="quiet splash tpm_tis.force=1"'
 
 	# Copies configuration files and scripts to their respective directory.
