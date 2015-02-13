@@ -4,11 +4,6 @@
 
 case $1/$2 in
     pre/*)
-        # Log time for suspend.
-        touch /tmp/suspend-test.log
-        echo -e "$(date); \c" >> /tmp/suspend-test.log
-        echo "OFF" >> /tmp/suspend-test.log
-
         # Kill Adobe Flash flugin as it prevent suspend.
         pgrep -f flashplayer | xargs kill >/dev/null 2>&1
 
@@ -26,10 +21,5 @@ case $1/$2 in
         # bind snd_hda_intel for sound.
         echo -n "0000:00:1b.0" | tee /sys/bus/pci/drivers/snd_hda_intel/bind
         echo -n "0000:00:03.0" | tee /sys/bus/pci/drivers/snd_hda_intel/bind
-
-        # Log time for suspend.
-        touch /tmp/suspend-test.log
-        echo -e "$(date); \c" >> /tmp/suspend-test.log
-        echo "ON" >> /tmp/suspend-test.log
         ;;
 esac
