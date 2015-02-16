@@ -26,6 +26,16 @@ chmod +x setup.py
 su -c ./setup.py
 ```
 
+- **Inspect `/etc/default/grub` for any unusual modifications:**
+```
+vi /etc/default/grub
+```
+
+- **Update your grub2 configuration:**
+```
+grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+
 - **Then reboot, and that's it!**
 
-If you encounter any potential issues with this particular subdirectory, please do not hesitate to report an issue under this repository. Thank you!
+If you encounter any potential issues with this particular subdirectory, please do not hesitate to report an issue under this repository. In the meantime, I will be developing an automatic way to create a backup of `/etc/default/grub` and update your grub2 configuration, in order to avoid manually performing a couple of the steps mentioned above.
