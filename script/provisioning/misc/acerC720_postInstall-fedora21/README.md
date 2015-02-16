@@ -36,11 +36,6 @@ chmod +x setup.py
 ./setup.py
 ```
 
-- **Inspect `/etc/default/grub` for any unusual modifications:**
-```
-vi /etc/default/grub
-```
-
 - **Update your grub2 configuration:**
 ```
 grub2-mkconfig -o /boot/grub2/grub.cfg
