@@ -1,1 +1,0 @@
-GRUB_CMDLINE_LINUX="tpm_tis.interrupts=0 tpm_tis.force=1"
