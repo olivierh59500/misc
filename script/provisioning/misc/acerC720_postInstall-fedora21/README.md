@@ -38,7 +38,7 @@ vi /etc/default/grub
 
 - **Update your grub2 configuration:**
 ```
-grub2-mkconfig -o /boot/grub2/grub.cfg
+su -c "grub2-mkconfig -o /boot/grub2/grub.cfg"
 ```
 
 - **Then reboot, and that's it!**
