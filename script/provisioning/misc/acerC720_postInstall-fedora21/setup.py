@@ -16,7 +16,7 @@ def main():
 	grub_appendStatus = 1 # Changes to zero, if modifications are made to grub.
 	grub_arguments    = {
 		'tpm_tis.interrupts' : 0,
-		'tpm_tis.force'       : 1
+		'tpm_tis.force'      : 1
 	}
 	grub_configFile   = '/etc/default/grub'
 	grub_parameter    = 'GRUB_CMDLINE_LINUX="'
