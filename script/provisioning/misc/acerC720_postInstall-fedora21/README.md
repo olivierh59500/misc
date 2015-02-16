@@ -43,4 +43,4 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 - **Then reboot, and that's it!**
 
-If you encounter any potential issues with this particular subdirectory, please do not hesitate to report an issue under this repository. In the meantime, I will be developing an automatic way to create a backup of `/etc/default/grub` and update your grub2 configuration, in order to avoid manually performing a couple of the steps mentioned above.
+If you encounter any potential issues with this particular subdirectory, please do not hesitate to report an issue under this repository. In the meantime, I will be developing an automatic way to create a backup of `/etc/default/grub` and update your grub2 configuration, in order to render a couple of the steps mentioned above as unnecessary.
