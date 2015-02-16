@@ -38,6 +38,20 @@ chmod +x setup.py
 ./setup.py
 ```
 
+- **You should expect this very output from `setup.py`:**
+```
+OK: Copied "cros-acpi-wakeup.conf" to "/etc/tmpfiles.d".
+OK: Copied "disable-touchpad-wakeup.conf" to "/etc/tmpfiles.d".
+OK: Copied "50-cros-touchpad.conf" to "/etc/X11/xorg.conf.d".
+OK: Copied "cros-sound-suspend.sh" to "/usr/lib/systemd/system-sleep".
+OK: Appended "tpm_tis.force" to "/etc/default/grub" with a value of 1.
+OK: Appended "tpm_tis.interrupts" to "/etc/default/grub" with a value of 0.
+WARN: Inspect "/etc/default/grub" before invoking "grub2-mkconfig -o /boot/grub2/grub.cfg" to generate a grub2 
+configuration file.
+
+Process completed. Reboot for modifications to take into effect.
+```
+
 - **Update your grub2 configuration:**
 ```
 grub2-mkconfig -o /boot/grub2/grub.cfg
