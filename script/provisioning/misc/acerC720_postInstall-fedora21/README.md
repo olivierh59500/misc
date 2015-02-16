@@ -6,9 +6,14 @@ However, just in case you are wondering, suspending functionality is covered her
 
 To begin the automatic configuration of your system:
 
+- **From within a shell, login as root:**
+```
+/usr/bin/su -l
+```
+
 - **Create a backup of `/etc/default/grub`:**
 ```
-su -c "cp /etc/default/grub /etc/default/grub.bak"
+cp /etc/default/grub /etc/default/grub.bak
 ```
 
 - **Clone this repository with git and navigate over to this particular subdirectory or download only said subdirectory with subversion:**
@@ -26,9 +31,9 @@ cd acerC720_postInstall-fedora21/
 chmod +x setup.py
 ```
 
-- **Execute `setup.py` as root:**
+- **Execute `setup.py`:**
 ```
-su -c ./setup.py
+./setup.py
 ```
 
 - **Inspect `/etc/default/grub` for any unusual modifications:**
@@ -38,9 +43,14 @@ vi /etc/default/grub
 
 - **Update your grub2 configuration:**
 ```
-su -c "grub2-mkconfig -o /boot/grub2/grub.cfg"
+grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
-- **Then reboot, and that's it!**
+- **Then, reboot:**
+```
+systemctl reboot
+```
+
+- **And that's it!**
 
 If you encounter any potential issues with this particular subdirectory, please do not hesitate to report an issue under this repository. In the meantime, I will be developing an automatic way to create a backup of `/etc/default/grub` and update your grub2 configuration, in order to render a couple of the steps mentioned above as unnecessary.
