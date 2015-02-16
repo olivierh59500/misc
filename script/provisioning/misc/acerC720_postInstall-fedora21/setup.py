@@ -64,7 +64,7 @@ def main():
 			
 				for line in fileinput.FileInput(grub_configFile, inplace = 1):
 					line = line.replace(grub_parameter, '%s%s=%s ' % (grub_parameter, i, grub_arguments_value))
-					print(line)
+					sys.stdout.write(line)
 				
 				grub_appendStatus = 0
 				print('OK: Appended "%s" to "%s" with a value of %s.' % (i, grub_configFile, grub_arguments_value))
