@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Script normally belongs in /usr/lib/systemd/system-sleep/.
-
 case $1/$2 in
     pre/*)
         # Kill Adobe Flash flugin as it prevent suspend.
