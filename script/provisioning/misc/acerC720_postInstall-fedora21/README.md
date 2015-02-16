@@ -18,10 +18,12 @@ cp /etc/default/grub /etc/default/grub.bak
 
 - **Clone this repository with git and navigate over to this particular subdirectory or download only said subdirectory with subversion:**
 ```
+yum install git -y
 git clone https://github.com/misterpeguero/misc.git
 cd misc/script/provisioning/misc/acerC720_postInstall-fedora21/
 ```
 ```
+yum install subversion -y
 svn checkout https://github.com/misterpeguero/misc/trunk/script/provisioning/misc/acerC720_postInstall-fedora21
 cd acerC720_postInstall-fedora21/
 ```
