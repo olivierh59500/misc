@@ -6,6 +6,11 @@ However, just in case you are wondering, suspending functionality is covered her
 
 To begin the automatic configuration of your system:
 
+- **Create a backup of `/etc/default/grub`:**
+```
+su -c "cp /etc/default/grub /etc/default/grub.bak"
+```
+
 - **Clone this repository with git and navigate over to this particular subdirectory or download only said subdirectory with subversion:**
 ```
 git clone https://github.com/misterpeguero/misc.git
