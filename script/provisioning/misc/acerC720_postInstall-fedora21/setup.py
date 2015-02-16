@@ -7,7 +7,7 @@ def main():
 	import sys
 	
 	exitStatus        = 0
-	files = {
+	files             = {
 		'50-cros-touchpad.conf'        : '/etc/X11/xorg.conf.d',
 		'cros-acpi-wakeup.conf'        : '/etc/tmpfiles.d',
 		'cros-sound-suspend.sh'        : '/usr/lib/systemd/system-sleep',
