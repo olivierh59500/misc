@@ -74,6 +74,7 @@ def main():
 	from argparse import ArgumentParser
 	import datetime
 	import os
+	import platform
 	import subprocess
 	import sys
 	import time
@@ -107,6 +108,10 @@ def main():
 	rsync_executable_local  = '/usr/bin/rsync'
 	rsync_executable_remote = '/usr/bin/sudo /usr/bin/rsync'
 	rsync_initial_arguments = '-avrtpzP'
+	
+	if platform.system() == 'Windows':
+		print('ERROR: This script is not compatible with the Windows platform, but was written with Linux in mind.')
+		sys.exit(1)
 
 	# ---- SCRIPT SUBDIRECTORY VERIFICATION ----
 
