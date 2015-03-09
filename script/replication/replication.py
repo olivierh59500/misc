@@ -115,6 +115,10 @@ def main():
 		print('ERROR: This script is not compatible with the Windows platform, but was written with Linux in mind.')
 		sys.exit(1)
 
+	if os.path.exists(rsync_executable_local) == False:
+		print('ERROR: "%s" was not found on this system and is required to utilize this script.' % rsync_executable_local)
+		sys.exit(1)
+
 	# ---- SCRIPT SUBDIRECTORY VERIFICATION ----
 
 	for subdirectory_name in required_subdirectories.keys():
