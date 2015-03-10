@@ -4,6 +4,8 @@ This particular script, which behaves as a rsync wrapper, was developed with the
 
 This was created out of mere desperation to modernize this very process that was once handled by a bash script, which contained aesthetically unpleasing, redundant, static code I developed exactly one year ago. The times have changed. Due to this work and the existence of Python, I am no longer clutching my pearls in 2015.
 
+####**For security reasons, I recommend utilizing this script and hosting other relevant files from root entirely.**
+
 ## Getting Started:
 
 - **From within a shell, use `wget` or `curl` to download `replication.py`:**
@@ -22,18 +24,24 @@ chown user:user replication.py
 
 - **Prior to invocation, ensure to specify the following parameters:**
 
-Parameter              | Type         | Example Value
----------              | ----         | -------------
-`--src-dir`            | List (Array) | `/foo`, `/foo/ping,/foo/pong`
-`--dest-dir`           | String       | `/bar`
-`--dest-hostname`      | String       | `machine.domain.com`,`10.0.0.1`
-`--dest-ssh-user`      | String       | `user`
-`--dest-ssh-port`      | String       | `22`
-`--mail-smtp-server`   | String       | `smtp.domain.com`
-`--mail-smtp-user`     | String       | `sender@domain.com`
-`--mail-smtp-port`     | String       | `465`,`587`
-`--mail-smtp-password` | String       | `&7df>":@1#0=-3]df=*&%!`,`abc123`
-`--mail-recipient`     | String       | `recipient@domain.com`
+Parameter                   | Type         | Example Value
+---------                   | ----         | -------------
+`--src-dir`                 | List (Array) | `/foo`, `/foo/ping,/foo/pong`
+`--dest-dir`                | String       | `/bar`
+`--dest-hostname`           | String       | `machine.domain.com`,`10.0.0.1`
+`--dest-ssh-user`           | String       | `user`
+`--dest-ssh-port`           | String       | `22`
+`--mail-smtp-server`        | String       | `smtp.domain.com`
+`--mail-smtp-user`          | String       | `sender@domain.com`
+`--mail-smtp-port`          | String       | `465`,`587`
+`--mail-smtp-password-file` | String       | `/home/user/password.txt`
+`--mail-recipient`          | String       | `recipient@domain.com`
+
+- **Create a SMTP password file containing the password of `--mail-smtp-user` and modify its permissions and ownership:**
+```
+chmod 400 /home/user/password.txt
+chown user:user /home/user/password.txt
+```
 
 - **Then, upon invoking `replication.py`, you will begin to notice output similar to the following example:**
 ```
