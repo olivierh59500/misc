@@ -105,7 +105,7 @@ For more information on the syntax of exclude list configuration files, consult 
 
 ## For Scheduled Use:
 
-This script was developed with the intention of automating a directory replication process and can be used in conjuction with `systemd-timer` and `cron`. For automation to be made possible, the use of SSH keys for authentication is required (and highly recommended).
+This script was developed with the intention of automating a directory replication process and can be used in conjuction with `systemd-timer` and `cron`. For automation to be made possible, the use of SSH keys for authentication is required (and highly recommended). If you are not familiar with SSH keys, I recommend reading [this](http://www.cyberciti.biz/faq/how-to-set-up-ssh-keys-on-linux-unix/) article from nixCraft.
 
 ### systemd-timer (Linux):
 
