@@ -3,9 +3,11 @@
 '''
 Directory Replication Script
 
-A simple script that replicates specified directories over to one centralized,
-remote location, using SSH and rsync, and notifies administrators of such progress
-via email.
+This particular script, which behaves as a rsync wrapper, was developed with
+the personal intention of replicating specific directories over to remote servers
+on a daily basis via SSH, while maintaining rsync exclude configuration files and
+logs within the directory said script resides in. It also features the convenient
+ability to send email notifications indicating the status of such a task.
 
 -----------------------
 
