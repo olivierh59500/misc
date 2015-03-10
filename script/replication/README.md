@@ -145,7 +145,6 @@ Unit=replication-machine.service
 [Install]
 WantedBy=basic.target
 ```
-
 > Note that the OnCalendar parameter contains a very specific value, which indicates that `replication-machine.service` will execute every day at 00:00 (12 AM). For more information on the syntax of said parameter, consult the [systemd.time(7) man page](http://www.freedesktop.org/software/systemd/man/systemd.time.html).
 
 - **Enable and start `replication-machine.timer`:**
@@ -162,3 +161,14 @@ systemctl start replication-machine.service
 Output from `replication.py` is automatically logged under `journalctl` and can be monitored in real-time, using the following command: `watch -n1 'journalctl -xn'`
 
 #### cron:
+
+- **Edit your root account's respective crontab file:**
+```
+crontab -e
+```
+
+- **Insert the following information and edit it to fulfill your requirements:**
+```
+* 0 * * * /usr/bin/python3 /path/to/replication.py --parameters
+```
+> Note that the example above contains very specific instructions (`* 0 * * *`), which indicate that `replication.py` will execute every day at 00:00 (12 AM). For more information on the syntax of said parameter, consult the [crontab(5) man page](http://linux.die.net/man/5/crontab).
