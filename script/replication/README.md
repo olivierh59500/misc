@@ -72,7 +72,13 @@ chmod 500 replication.py
 chown user:user replication.py
 ```
 
-- **Prior to invocation, ensure to specify the following parameters:**
+- **Create a password file containing a password required for SMTP authentication and modify its permissions and ownership:**
+```
+chmod 400 password.txt
+chown user:user password.txt
+```
+
+- **Prior to the invocation of `replication.py`, ensure to specify the following parameters:**
 
 Parameter                   | Type         | Example Value
 ---------                   | ----         | -------------
@@ -87,15 +93,9 @@ Parameter                   | Type         | Example Value
 `--mail-smtp-password-file` | String       | `/home/user/password.txt`
 `--mail-recipient`          | String       | `recipient@domain.com`
 
-- **Create a SMTP password file containing the password of `--mail-smtp-user` and modify its permissions and ownership:**
-```
-chmod 400 password.txt
-chown user:user password.txt
-```
-
 ## Results:
 
-- **Upon invoking `replication.py`, you will begin to notice output similar to the following example:**
+- **Upon the invocation of `replication.py`, you will begin to notice output similar to the following example:**
 ```
 OK: Created (Required Script Subdirectory) - "/home/misterpeguero/replication_script/exclude"
 OK: Created (Required Script Subdirectory) - "/home/misterpeguero/replication_script/log"
