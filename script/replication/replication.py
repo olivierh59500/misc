@@ -130,9 +130,9 @@ def main():
 	    else:
 	        try:
 	            os.mkdir(subdirectory_path)
-	            print('\n\033[32mOK\033[0m: Created - "%s".' % subdirectory_path)
+	            print('\n\033[32mOK\033[0m: Created (Required Script Subdirectory) - "%s".' % subdirectory_path)
 	        except OSError as why:
-	            print('\n\033[31mERROR\033[0m: "%s" could not be created. Details: %s' % (subdirectory_path, why), file = sys.stderr)
+	            print('\n\033[31mERROR\033[0m: Required script subdirectory "%s" could not be created. Details: %s' % (subdirectory_path, why), file = sys.stderr)
 	            sys.exit(1)
 
 	# ---- SOURCE DIRECTORY BACKUP PROCESS ----
@@ -150,11 +150,11 @@ def main():
 		# ---- SOURCE DIRECTORY VERIFICATION ----
 
 		if source_directory_path_existence == False:
-			print('\033[31mERROR\033[0m: "%s" is nonexistent.' % source_directory_path, file = sys.stderr)
+			print('\033[31mERROR\033[0m: Directory "%s" is nonexistent.' % source_directory_path, file = sys.stderr)
 			exit_code = 1
 			continue
 		else:
-			print('\033[32mOK\033[0m: Found   - "%s"' % source_directory_path)
+			print('\033[32mOK\033[0m: Found (Directory) - "%s"' % source_directory_path)
 
 		# ---- RSYNC EXCLUDE LIST VERIFICATION ----
 
@@ -163,13 +163,13 @@ def main():
 				new_exclude_list = open(rsync_exclude_list, 'w')
 				new_exclude_list.write('')
 				new_exclude_list.close()
-				print('\033[32mOK\033[0m: Created - "%s".' % rsync_exclude_list)
+				print('\033[32mOK\033[0m: Created (Exclude List) - "%s".' % rsync_exclude_list)
 			except OSError as why:
-				print('\033[31mERROR\033[0m: "%s" could not be created. Details: %s' % (rsync_exclude_list, why), file = sys.stderr)
+				print('\033[31mERROR\033[0m: Exclude list "%s" could not be created. Details: %s' % (rsync_exclude_list, why), file = sys.stderr)
 				exit_code = 1
 				continue
 		else:
-			print('\033[32mOK\033[0m: Found   - "%s"' % rsync_exclude_list)
+			print('\033[32mOK\033[0m: Found (Exclude List) - "%s"' % rsync_exclude_list)
 
 		# ---- RSYNC INVOCATION ----
 
