@@ -171,4 +171,4 @@ crontab -e
 ```
 * 0 * * * /usr/bin/python3 /path/to/replication.py --parameters
 ```
-> Note that the example above contains very specific instructions (`* 0 * * *`), which indicate that `replication.py` will execute every day at 00:00 (12 AM). For more information on the syntax of said parameter, consult the [crontab(5) man page](http://linux.die.net/man/5/crontab).
+> Note that the example above contains very specific instructions (`* 0 * * *`), which indicate that `replication.py` will execute every day at 00:00 (12 AM). For more information on said syntax, consult the [crontab(5) man page](http://linux.die.net/man/5/crontab).
