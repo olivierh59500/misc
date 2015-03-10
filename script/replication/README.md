@@ -102,11 +102,6 @@ pong/file*
 
 For more information on the syntax of exclude list configuration files, consult [this](http://www.howtogeek.com/168009/how-to-exclude-files-from-rsync/) article from How-To-Geek.
 
-## For Scheduled Use (systemd-timer):
+## For Scheduled Use:
 
-To be filled.
-
-## For Scheduled Use (cron):
-
-To be filled.
-
+This script was developed with the intention of automating a directory replication process and can be used in conjuction with `systemd-timer` and `cron`.
