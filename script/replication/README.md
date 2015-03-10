@@ -28,7 +28,7 @@ Parameter              | Type         | Example Value
 `--dest-hostname`      | String       | `machine.domain.com`,`10.0.0.1`
 `--dest-ssh-user`      | String       | `user`
 `--dest-ssh-port`      | String       | `22`
-`--mail-smtp-server`   | String       | `mail.domain.com`
+`--mail-smtp-server`   | String       | `smtp.domain.com`
 `--mail-smtp-user`     | String       | `sender@domain.com`
 `--mail-smtp-port`     | String       | `465`,`587`
 `--mail-smtp-password` | String       | `&7df>":@1#0=-3]df=*&%!`,`abc123`
