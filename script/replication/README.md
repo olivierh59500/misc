@@ -106,7 +106,7 @@ For more information on the syntax of exclude list configuration files, consult 
 
 This script was developed with the intention of automating a directory replication process and can be used in conjuction with `systemd-timer` and `cron`.
 
-#### systemd-timer (Linux):
+### systemd-timer (Linux):
 
 - **As root, create systemd unit and timer files:**
 ```
@@ -160,7 +160,7 @@ systemctl start replication-machine.service
 
 Output from `replication.py` is automatically logged under `journalctl` and can be monitored in real-time, using the following command: `watch -n1 'journalctl -xn'`
 
-#### cron:
+### cron:
 
 - **Edit your root account's respective crontab file:**
 ```
