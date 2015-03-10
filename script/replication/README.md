@@ -105,3 +105,60 @@ For more information on the syntax of exclude list configuration files, consult 
 ## For Scheduled Use:
 
 This script was developed with the intention of automating a directory replication process and can be used in conjuction with `systemd-timer` and `cron`.
+
+#### systemd-timer (Linux):
+
+- **As root, create systemd unit and timer files:**
+```
+touch /etc/systemd/system/replication-machine.service /etc/systemd/system/replication-machine.timer
+```
+> Note that the string `machine` in `replication-machine` conveniently indicates the destination hostname.
+
+- **Modify file permissions and ownership:**
+```
+chmod 600 /etc/systemd/system/replication-machine*
+chown root:root /etc/systemd/system/replication-machine*
+```
+- **Within `replication-machine.service`, insert the following information and edit it to fulfill your requirements:**
+```
+[Unit]
+Description=replication-machine
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /path/to/replication.py --parameters
+
+[Install]
+WantedBy=basic.target
+```
+
+- **Within `replication-machine.timer`, insert the following information and edit it to fulfill your requirements:**
+```
+[Unit]
+Description=replication-machine
+
+[Timer]
+OnCalendar=*-*-* 00:00:00
+Persistent=true
+Unit=replication-machine.service
+
+[Install]
+WantedBy=basic.target
+```
+
+> Note that the OnCalendar parameter contains a very specific value, which indicates that `replication-machine.service` will execute every day at 00:00 (12 AM). For more information on the syntax of said parameter, consult the [systemd.time(7) man page](http://www.freedesktop.org/software/systemd/man/systemd.time.html).
+
+- **Enable and start `replication-machine.timer`:**
+```
+systemctl enable replication-machine.timer
+systemctl start replication-machine.timer
+```
+
+- **And perform a test run of `replication.py`:**
+```
+systemctl start replication-machine.service
+```
+
+Output from `replication.py` is automatically logged under `journalctl` and can be monitored in real-time, using the following command: `watch -n1 'journalctl -xn'`
+
+#### cron:
