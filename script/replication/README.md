@@ -8,7 +8,20 @@ This was created out of mere desperation to modernize this very process that was
 
 ## Preparing the Source Client:
 
-- **As root, from within a shell, ...**
+- **From within a shell, create a new `.ssh` directory, if it does not already exist:**
+```
+mkdir ~/.ssh
+```
+
+- **Modify directory permissions:**
+```
+chmod 700 ~/.ssh
+```
+
+- **Generate a SSH public and private key pair:**
+```
+ssh-keygen
+```
 
 ## Preparing the Destination Server:
 
