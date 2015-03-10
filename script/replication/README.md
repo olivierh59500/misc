@@ -73,6 +73,9 @@ Process finished. (0)
 Subject : Directory Replication [machine.domain.com_2015-01-01_00-00-00] (SUCCESS)
 Body    : Process completed successfully.
 ```
+
+- **And a new log file will be generated at `log/machine.domain.com_2015-01-01_00-00-00.log`**
+
 ## Exclude Lists:
 
 In the previous output example, you may have noticed this particular message:
