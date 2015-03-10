@@ -6,7 +6,15 @@ This was created out of mere desperation to modernize this very process that was
 
 ####**For security reasons, I recommend utilizing this script and hosting other relevant files from root entirely.**
 
-## Getting Started:
+## Preparing the Destination Server:
+
+- **As root, from within a shell, ...**
+
+## Preparing the Source Client:
+
+- **As root, from within a shell, ...**
+
+## Preparing the Script:
 
 - **From within a shell, use `wget` or `curl` to download `replication.py`:**
 ```
@@ -43,7 +51,9 @@ chmod 400 password.txt
 chown user:user password.txt
 ```
 
-- **Then, upon invoking `replication.py`, you will begin to notice output similar to the following example:**
+## Results:
+
+- **Upon invoking `replication.py`, you will begin to notice output similar to the following example:**
 ```
 OK: Created (Required Script Subdirectory) - "/home/misterpeguero/replication_script/exclude"
 OK: Created (Required Script Subdirectory) - "/home/misterpeguero/replication_script/log"
