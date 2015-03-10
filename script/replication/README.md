@@ -1,4 +1,4 @@
-# Data Replication Script
+# Directory Replication Script
 
 This particular script, which behaves as a rsync wrapper, was developed with the personal intention of replicating specific directories over to remote servers on a daily basis, while maintaining [rsync exclude configuration files](http://www.howtogeek.com/168009/how-to-exclude-files-from-rsync/) and logs within the directory said script resides in. It also features the convenient ability to send email notifications indicating the status of such a task.
 
