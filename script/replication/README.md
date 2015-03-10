@@ -68,6 +68,11 @@ OK: Notification attempt was successful.
 
 Process finished. (0)
 ```
+- **Once `replication.py` has terminated, an email notification consisting of the following information will be sent to the specified recipient (`recipient@domain.com`):**
+```
+Subject : Directory Replication [machine.domain.com_2015-01-01_00-00-00] (SUCCESS)
+Body    : Process completed successfully.
+```
 ## Exclude Lists:
 
 In the previous output example, you may have noticed this particular message:
