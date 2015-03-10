@@ -6,11 +6,11 @@ This was created out of mere desperation to modernize this very process that was
 
 ####**For security reasons, I recommend utilizing this script and hosting other relevant files from root entirely.**
 
-## Preparing the Destination Server:
+## Preparing the Source Client:
 
 - **As root, from within a shell, ...**
 
-## Preparing the Source Client:
+## Preparing the Destination Server:
 
 - **As root, from within a shell, ...**
 
