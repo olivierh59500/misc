@@ -1,6 +1,6 @@
 # Directory Replication Script
 
-This particular script, which behaves as a rsync wrapper, was developed with the personal intention of replicating specific directories over to remote servers on a daily basis, while maintaining [rsync exclude configuration files](http://www.howtogeek.com/168009/how-to-exclude-files-from-rsync/) and logs within the directory said script resides in. It also features the convenient ability to send email notifications indicating the status of such a task.
+This particular script, which behaves as a rsync wrapper, was developed with the personal intention of replicating specific directories over to remote servers on a daily basis via SSH, while maintaining [rsync exclude configuration files](http://www.howtogeek.com/168009/how-to-exclude-files-from-rsync/) and logs within the directory said script resides in. It also features the convenient ability to send email notifications indicating the status of such a task.
 
 This was created out of mere desperation to modernize this very process that was once handled by a bash script, which contained aesthetically unpleasing, redundant, static code that I feel should cease to exist in my environment. Due to this work and the existence of Python, I am no longer clutching my pearls.
 
@@ -14,9 +14,10 @@ wget https://raw.githubusercontent.com/misterpeguero/misc/master/script/replicat
 curl -O https://raw.githubusercontent.com/misterpeguero/misc/master/script/replication/replication.py
 ```
 
-- **Mark `replication.py` as an executable:**
+- **Modify file permissions and ownership:**
 ```
-chmod +x replication.py
+chmod 500 replication.py
+chown user:user replication.py
 ```
 
 - **Prior to invocation, ensure to specify the following parameters:**
@@ -104,7 +105,7 @@ For more information on the syntax of exclude list configuration files, consult 
 
 ## For Scheduled Use:
 
-This script was developed with the intention of automating a directory replication process and can be used in conjuction with `systemd-timer` and `cron`.
+This script was developed with the intention of automating a directory replication process and can be used in conjuction with `systemd-timer` and `cron`. For automation to be made possible, the use of SSH keys for authentication is required (and highly recommended).
 
 ### systemd-timer (Linux):
 
