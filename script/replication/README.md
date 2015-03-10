@@ -77,7 +77,7 @@ Subject : Directory Replication [machine.domain.com_2015-01-01_00-00-00] (SUCCES
 Body    : Process completed successfully.
 ```
 
-- **And a new log file will be generated at `log/machine.domain.com_2015-01-01_00-00-00.log`**
+- **And a new log file will be generated at `log/machine.domain.com_2015-01-01_00-00-00.log`.**
 
 ## Exclude Lists:
 
@@ -100,7 +100,7 @@ pong/file*
 *.txt
 ```
 
-For more information on the syntax of exclude list configuration files, consult the following article from How-To-Geek: http://www.howtogeek.com/168009/how-to-exclude-files-from-rsync/
+For more information on the syntax of exclude list configuration files, consult [this](http://www.howtogeek.com/168009/how-to-exclude-files-from-rsync/) article from How-To-Geek.
 
 ## For Scheduled Use (systemd-timer):
 
