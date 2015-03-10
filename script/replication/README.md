@@ -49,14 +49,16 @@ OK: Created (Exclude List) - "/home/misterpeguero/replication_script/exclude/_fo
 Invoking Command: /usr/bin/rsync -avrtpzP --rsync-path="/usr/bin/sudo /usr/bin/rsync" -e "ssh -p 22" --delete --exclude-from="/home/misterpeguero/replication_script/exclude/_foo-machine.domain.com.conf" "/foo" user@machine.domain.com:"/bar/" --log-file="/home/misterpeguero/replication_script/log/machine.domain.com_2015-01-01_00-00-00.log"
 
 sending incremental file list
+foo/file1.txt
+            0 100%  1.00MB/s    0:00:00 (xfr#1, to-chk=4/4)
 foo/ping/
 foo/ping/file1.txt
-            0 100%  1.00MB/s    0:00:00 (xfr#1, to-chk=3/3)
+            0 100%  1.00MB/s    0:00:00 (xfr#1, to-chk=3/4)
 foo/pong/
 foo/pong/file1.txt
-            0 100%  1.00MB/s    0:00:00 (xfr#2, to-chk=2/3)
+            0 100%  1.00MB/s    0:00:00 (xfr#2, to-chk=2/4)
 foo/pong/file2.txt
-            0 100%  1.00MB/s    0:00:00 (xfr#3, to-chk=1/3)
+            0 100%  1.00MB/s    0:00:00 (xfr#3, to-chk=1/4)
 
 sent 0 bytes  received 0 bytes  0 bytes/sec
 total size is 0  speedup is 0
