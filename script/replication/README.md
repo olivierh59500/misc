@@ -18,9 +18,38 @@ mkdir ~/.ssh
 chmod 700 ~/.ssh
 ```
 
-- **Generate a SSH public and private key pair:**
+- **Generate a SSH public and private key pair without a passphrase:**
 ```
 ssh-keygen
+```
+
+- **You will notice output similar to the following example:**
+```
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/user/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/user/.ssh/id_rsa.
+Your public key has been saved in /home/user/.ssh/id_rsa.pub.
+The key fingerprint is:
+00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00 user@machine.domain.com
+The key's randomart image is:
++--[ RSA 2048]----+
+|         oo  +.  |
+|        .+.      |
+|          oo.* . |
+|            = .  |
+|                 |
+|       .   o.+   |
+|            +    |
+|             .   |
+|                 |
++-----------------+
+```
+
+- **Replicate the SSH public key over to a destination server:**
+```
+ssh-copy-id user@machine.domain.com
 ```
 
 ## Preparing the Destination Server:
