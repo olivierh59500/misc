@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 '''
-Data Replication Script
+Directory Replication Script
 
 A simple script that replicates specified directories over to one centralized,
 remote location, using SSH and rsync, and notifies administrators of such progress
@@ -100,7 +100,7 @@ def main():
 	exit_code               = 0
 	log_time                = time.strftime('%Y-%m-%d_%H-%M-%S')
 	log_file_name           = args.destination_hostname + '_' + log_time
-	mail_subject            = 'Data Replication'
+	mail_subject            = 'Directory Replication'
 	required_subdirectories = {
 		'exclude' : current_directory + '/exclude',
 		'log'     : current_directory + '/log'
