@@ -2,7 +2,7 @@
 
 This particular script, which behaves as a rsync wrapper, was developed with the personal intention of replicating specific directories over to remote servers on a daily basis via SSH, while maintaining [rsync exclude configuration files](http://www.howtogeek.com/168009/how-to-exclude-files-from-rsync/) and logs within the directory said script resides in. It also features the convenient ability to send email notifications indicating the status of such a task.
 
-This was created out of mere desperation to modernize this very process that was once handled by a bash script, which contained aesthetically unpleasing, redundant, static code that I feel should cease to exist in my environment. Due to this work and the existence of Python, I am no longer clutching my pearls.
+This was created out of mere desperation to modernize this very process that was once handled by a bash script, which contained aesthetically unpleasing, redundant, static code I developed exactly one year ago. The times have changed. Due to this work and the existence of Python, I am no longer clutching my pearls in 2015.
 
 ## Getting Started:
 
