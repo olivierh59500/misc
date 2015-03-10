@@ -39,8 +39,8 @@ Parameter                   | Type         | Example Value
 
 - **Create a SMTP password file containing the password of `--mail-smtp-user` and modify its permissions and ownership:**
 ```
-chmod 400 /home/user/password.txt
-chown user:user /home/user/password.txt
+chmod 400 password.txt
+chown user:user password.txt
 ```
 
 - **Then, upon invoking `replication.py`, you will begin to notice output similar to the following example:**
