@@ -72,7 +72,7 @@ chmod 500 replication.py
 chown user:user replication.py
 ```
 
-- **Create a password file containing a password required for SMTP authentication and modify its permissions and ownership:**
+- **Create a password file containing a password required for SMTP PLAIN authentication and modify its permissions and ownership:**
 ```
 chmod 400 password.txt
 chown user:user password.txt
