@@ -36,11 +36,11 @@ Parameter              | Type         | Example Value
 
 - **Then, invoke `replication.py` and grab the popcorn.**
 
-## For scheduled use (systemd-timer):
+## For Scheduled Use (systemd-timer):
 
 To be filled.
 
-## For scheduled use (cron):
+## For Scheduled Use (cron):
 
 To be filled.
 
