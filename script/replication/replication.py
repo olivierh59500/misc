@@ -140,7 +140,7 @@ def main():
 	for source_directory_path in args.source_directory:
 		source_directory_name                  = source_directory_path.split('/')[-1]
 		source_directory_path_with_underscores = source_directory_path.replace('/', '_')
-		source_directory_path_existence        = os.path.exists(source_directory_path)
+		source_directory_path_existence        = os.path.isdir(source_directory_path)
 		rsync_exclude_list                     = required_subdirectories['exclude'] + '/' + source_directory_path_with_underscores + '-' + args.destination_hostname + '.conf'
 		rsync_exclude_list_existence           = os.path.exists(rsync_exclude_list)
 		rsync_log_file_path                    = required_subdirectories['log'] + '/' + log_file_name + '.log'
