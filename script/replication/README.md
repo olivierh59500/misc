@@ -68,6 +68,7 @@ OK: Notification attempt was successful.
 
 Process finished. (0)
 ```
+
 - **Once `replication.py` has terminated, an email notification consisting of the following information will be sent to the specified recipient (`recipient@domain.com`):**
 ```
 Subject : Directory Replication [machine.domain.com_2015-01-01_00-00-00] (SUCCESS)
@@ -82,11 +83,20 @@ In the previous output example, you may have noticed this particular message:
 ```
 OK: Created (Exclude List) - "/home/misterpeguero/replication_script/exclude/_foo-machine.domain.com.conf"
 ```
-An exclude list configuration file is created whenever a directory is specified as a source directory. The purpose of this particular file is to exclude specific subdirectories and/or files from replication. In the case of this script, `_foo-machine.domain.com.conf` consists of a naming scheme that indicates its relation to its respective source directory, `/foo`, and the source directory's specified destination hostname, `machine.domain.com`. Underscores represent forward slashes, as well. To provide a simpler understanding of this explanation, here is a breakdown of the syntax in question:
+An exclude list configuration file makes use of rsync's `--exclude-from` parameter and is created whenever a source directory is specified. The purpose of this particular file is to exclude specific subdirectories and/or files from replication. In the case of this script, `_foo-machine.domain.com.conf` consists of a naming scheme that indicates its relation to its respective source directory, `/foo`, and the source directory's specified destination hostname, `machine.domain.com`. Underscores represent forward slashes, as well. To provide a simpler understanding of this explanation, here is a breakdown of the syntax in question:
 
 1. `_(SOURCE DIRECTORY PATH)-(DESTINATION HOSTNAME).conf`
 2. `_foo-machine.domain.com.conf`
 3. **`/foo machine.domain.com`**
+
+To take advantage of exclude list configuration files, the following examples can be specified:
+```
+ping
+ping/file1.txt
+pong
+pong/file*
+*.txt
+```
 
 For more information on the syntax of exclude list configuration files, consult the following article from How-To-Geek: http://www.howtogeek.com/168009/how-to-exclude-files-from-rsync/
 
