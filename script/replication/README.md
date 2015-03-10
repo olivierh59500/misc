@@ -4,7 +4,7 @@ This particular script, which behaves as a rsync wrapper, was developed with the
 
 This was created out of mere desperation to modernize this very process that was once handled by a bash script, which contained aesthetically unpleasing, redundant, static code I developed exactly one year ago. The times have changed. Due to this work and the existence of Python, I am no longer clutching my pearls in 2015.
 
-####**For security reasons, I recommend utilizing this script and hosting other relevant files from root entirely.**
+####**For security reasons, a source client should utilize this script and host other relevant files from root entirely.**
 
 ## Preparing the Source Client:
 
@@ -54,7 +54,23 @@ ssh-copy-id user@machine.domain.com
 
 ## Preparing the Destination Server:
 
-- **As root, from within a shell, ...**
+- **Log in as root and configure sudo access for the user that received the source client's SSH public key.**
+```
+visudo
+```
+
+- **Add the following entry and save this modification, allowing you to transfer permission and ownership information from files and directories from a source client:**
+```
+user ALL=(ALL) NOPASSWD: ALL
+```
+
+- **Open `/etc/ssh/sshd_config` and ensure the following parameters are configured and uncommented:**
+```
+PermitRootLogin no
+PasswordAuthentication no
+RSAAuthentication yes
+PubkeyAuthentication yes
+```
 
 ## Preparing the Script:
 
