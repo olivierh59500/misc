@@ -63,15 +63,15 @@ def send_mail_notification(args, mail_subject, mail_message):
 		server.quit()
 		return(0)
 
-	except OSError as why:
+	except Exception as why:
 		return(why)
 
 def split_source_directories(source_directories):
 	try:
 		result = source_directories.split(',')
 		return(result)
-	except OSError as why:
-		raise('Splitting source directories resulted in an error. Details: %s' % why)
+	except Exception as why:
+		raise Exception('Splitting source directories resulted in an error. Details: %s' % why)
 
 def main():
 	from argparse import ArgumentParser
@@ -85,16 +85,16 @@ def main():
 	# ---- ARGUMENTS ----
 
 	parser = ArgumentParser()
-	parser.add_argument('--src-dir',            dest = 'source_directory',      required = True, type = split_source_directories)
-	parser.add_argument('--dest-dir',           dest = 'destination_directory', required = True)
-	parser.add_argument('--dest-hostname',      dest = 'destination_hostname',  required = True)
-	parser.add_argument('--dest-ssh-user',      dest = 'destination_ssh_user',  required = True)
-	parser.add_argument('--dest-ssh-port',      dest = 'destination_ssh_port',  required = True)
-	parser.add_argument('--mail-smtp-server',   dest = 'mail_smtp_server',      required = True)
-	parser.add_argument('--mail-smtp-port',     dest = 'mail_smtp_port',        required = True)
-	parser.add_argument('--mail-smtp-user',     dest = 'mail_smtp_user',        required = True)
-	parser.add_argument('--mail-smtp-password', dest = 'mail_smtp_password',    required = True)
-	parser.add_argument('--mail-recipient',     dest = 'mail_recipient',        required = True)
+	parser.add_argument('--src-dir',                 dest = 'source_directory',           required = True, type = split_source_directories)
+	parser.add_argument('--dest-dir',                dest = 'destination_directory',      required = True)
+	parser.add_argument('--dest-hostname',           dest = 'destination_hostname',       required = True)
+	parser.add_argument('--dest-ssh-user',           dest = 'destination_ssh_user',       required = True)
+	parser.add_argument('--dest-ssh-port',           dest = 'destination_ssh_port',       required = True)
+	parser.add_argument('--mail-smtp-server',        dest = 'mail_smtp_server',           required = True)
+	parser.add_argument('--mail-smtp-port',          dest = 'mail_smtp_port',             required = True)
+	parser.add_argument('--mail-smtp-user',          dest = 'mail_smtp_user',             required = True)
+	parser.add_argument('--mail-smtp-password-file', dest = 'mail_smtp_password_file',    required = True)
+	parser.add_argument('--mail-recipient',          dest = 'mail_recipient',             required = True)
 	args = parser.parse_args()
 
 	# ---- VARIABLES ----
@@ -122,21 +122,38 @@ def main():
 		print('ERROR: "%s" was not found on this system and is required to utilize this script.' % rsync_executable_local)
 		sys.exit(1)
 
+	# ---- IMPORTATION OF SMTP PASSWORD FILE ----
+	
+	try:
+		if os.path.exists(args.mail_smtp_password_file) == False:
+			raise Exception('The specified SMTP password file does not exist.')
+			
+		mail_smtp_password_file = open(args.mail_smtp_password_file, 'r')
+		mail_smtp_password      = mail_smtp_password_file.readlines()
+		mail_smtp_password_file.close()
+		args.mail_smtp_password = mail_smtp_password[0].strip()
+	except IndexError:
+		print('\n\033[31mERROR\033[0m: The specified SMTP password file does not contain data.', file = sys.stderr)
+		sys.exit(1)
+	except Exception as why:
+		print('\n\033[31mERROR\033[0m: Importing a SMTP password file resulted in an error. Details: %s' % why, file = sys.stderr)
+		sys.exit(1)
+
 	# ---- SCRIPT SUBDIRECTORY VERIFICATION ----
 
 	for subdirectory_name in required_subdirectories.keys():
-	    subdirectory_path           = required_subdirectories[subdirectory_name]
-	    subdirectory_path_existence = os.path.isdir(subdirectory_path)
+		subdirectory_path           = required_subdirectories[subdirectory_name]
+		subdirectory_path_existence = os.path.isdir(subdirectory_path)
 
-	    if subdirectory_path_existence == True:
-	        continue
-	    else:
-	        try:
-	            os.mkdir(subdirectory_path)
-	            print('\n\033[32mOK\033[0m: Created (Required Script Subdirectory) - "%s".' % subdirectory_path)
-	        except OSError as why:
-	            print('\n\033[31mERROR\033[0m: Required script subdirectory "%s" could not be created. Details: %s' % (subdirectory_path, why), file = sys.stderr)
-	            sys.exit(1)
+		if subdirectory_path_existence == True:
+			continue
+		else:
+			try:
+				os.mkdir(subdirectory_path)
+				print('\n\033[32mOK\033[0m: Created (Required Script Subdirectory) - "%s".' % subdirectory_path)
+			except Exception as why:
+				print('\n\033[31mERROR\033[0m: Required script subdirectory "%s" could not be created. Details: %s' % (subdirectory_path, why), file = sys.stderr)
+				sys.exit(1)
 
 	# ---- SOURCE DIRECTORY BACKUP PROCESS ----
 
@@ -167,7 +184,7 @@ def main():
 				new_exclude_list.write('')
 				new_exclude_list.close()
 				print('\033[32mOK\033[0m: Created (Exclude List) - "%s".' % rsync_exclude_list)
-			except OSError as why:
+			except Exception as why:
 				print('\033[31mERROR\033[0m: Exclude list "%s" could not be created. Details: %s' % (rsync_exclude_list, why), file = sys.stderr)
 				exit_code = 1
 				continue
