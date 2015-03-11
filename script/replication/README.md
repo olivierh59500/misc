@@ -211,7 +211,7 @@ touch /etc/systemd/system/replication-machine.service /etc/systemd/system/replic
 chmod 600 /etc/systemd/system/replication-machine*
 chown root:root /etc/systemd/system/replication-machine*
 ```
-- **Within `replication-machine.service`, insert the following information and edit it to fulfill your requirements:**
+- **From within `replication-machine.service`, insert the following information and edit it to fulfill your requirements:**
 ```
 [Unit]
 Description=replication-machine
@@ -224,7 +224,7 @@ ExecStart=/usr/bin/python3 /path/to/replication.py --parameters
 WantedBy=basic.target
 ```
 
-- **Within `replication-machine.timer`, insert the following information and edit it to fulfill your requirements:**
+- **From within `replication-machine.timer`, insert the following information and edit it to fulfill your requirements:**
 ```
 [Unit]
 Description=replication-machine
