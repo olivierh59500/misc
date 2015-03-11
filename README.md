@@ -1,6 +1,6 @@
 # misc
 
-A repository of miscellaneous scripts and configuration files I have personally created for productional and developmental use.
+This is a repository consisting of miscellaneous scripts and configuration files personally created/developed for productional and developmental use.
 
 ### Notable Work:
 
