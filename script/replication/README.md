@@ -68,7 +68,7 @@ ssh-copy-id user@machine.domain.com
 
 ## Preparing the Destination Server:
 
-- **Log in as root and configure sudo access for `user`.**
+- **Log in as root and configure sudo access for the recently created user `user`.**
 ```
 visudo
 ```
