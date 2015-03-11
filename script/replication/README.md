@@ -18,7 +18,7 @@ adduser user -m
 mkdir ~/.ssh
 ```
 
-- **Modify directory permissions:**
+- **Modify directory permissions and ownership:**
 ```
 chmod 700 ~/.ssh
 chown root:root ~/.ssh
