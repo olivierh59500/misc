@@ -21,6 +21,7 @@ mkdir ~/.ssh
 - **Modify directory permissions:**
 ```
 chmod 700 ~/.ssh
+chown root:root ~/.ssh
 ```
 
 - **Generate a SSH public and private key pair without a passphrase:**
