@@ -5,10 +5,14 @@ Directory Replication Script
 
 This particular script, which behaves as a rsync wrapper, was developed with
 the personal intention of replicating specific directories over to remote servers
-on a daily basis, using SSH and job scheduling, while maintaining rsync exclude
-configuration files and logs within the directory said script resides in. It
-also features the convenient ability to send email notifications indicating
-the status of such a task.
+(destination servers) from local servers (source clients) on a daily basis, using
+SSH and job scheduling, while maintaining rsync exclude configuration files and
+logs within the directory said script resides in. It also features the convenient
+ability to send email notifications indicating the status of such a task, using
+SMTP PLAIN authentication.
+
+*** For security reasons, a source client should utilize this script and host
+other relevant files from root entirely. ***
 
 -----------------------
 
