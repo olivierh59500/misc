@@ -1,6 +1,6 @@
 # Directory Replication Script
 
-This particular script, which behaves as a rsync wrapper, was developed with the personal intention of replicating specific directories over to remote servers (destination servers) from local servers (source clients) on a daily basis, using [SSH and job scheduling](#for-scheduled-use), while maintaining [rsync exclude configuration files](#exclude-lists) and logs within the directory said script resides in. It also features the convenient ability to send email notifications indicating the status of such a task.
+This particular script, which behaves as a rsync wrapper, was developed with the personal intention of replicating specific directories over to remote servers (_destination servers_) from local servers (_source clients_) on a daily basis, using [SSH and job scheduling](#for-scheduled-use), while maintaining [rsync exclude configuration files](#exclude-lists) and logs within the directory said script resides in. It also features the convenient ability to send email notifications indicating the status of such a task, using SMTP PLAIN authentication.
 
 This was created out of mere desperation to modernize this very process that was once handled by a bash script, which contained aesthetically unpleasing, redundant, static code I developed exactly one year ago. The times have changed. Due to this work and the existence of Python, I am no longer clutching my pearls in 2015.
 
