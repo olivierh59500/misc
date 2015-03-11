@@ -6,6 +6,14 @@ This was created out of mere desperation to modernize this very process that was
 
 > **For security reasons, a source client should utilize this script and host other relevant files from root entirely.**
 
+## Sections:
+1. [Preparing the Source Client](#preparing-the-source-client)
+2. [Preparing the Destination Server](#preparing-the-destination-server)
+3. [Preparing the Script](#preparing-the-script)
+4. [Results](#results)
+5. [Exclude Lists](#exclude-lists)
+6. [For Scheduled Use](#for-scheduled-use)
+
 ## Preparing the Source Client:
 
 - **From a destination server, log in as root and create a new user that will be used for SSH key authentication and the replication of data:**
