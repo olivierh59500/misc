@@ -8,7 +8,7 @@ This was created out of mere desperation to modernize this very process that was
 
 ## Preparing the Source Client:
 
-- **From a destination server, log in as root and create a new user that will be used for SSH key authentication:**
+- **From a destination server, log in as root and create a new user that will be used for SSH key authentication and the replication of data:**
 ```
 adduser user -m
 ```
