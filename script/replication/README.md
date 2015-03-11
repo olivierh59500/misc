@@ -8,7 +8,7 @@ This was created out of mere desperation to modernize this very process that was
 
 ## Preparing the Source Client:
 
-- **From within a shell, create a new `.ssh` directory, if it does not already exist:**
+- **Log in as root and create a new `.ssh` directory, if it does not already exist:**
 ```
 mkdir ~/.ssh
 ```
@@ -32,7 +32,7 @@ Enter same passphrase again:
 Your identification has been saved in /home/user/.ssh/id_rsa.
 Your public key has been saved in /home/user/.ssh/id_rsa.pub.
 The key fingerprint is:
-00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00 user@machine.domain.com
+00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00 root@machine.domain.com
 The key's randomart image is:
 +--[ RSA 2048]----+
 |         oo  +.  |
@@ -71,6 +71,15 @@ PasswordAuthentication no
 RSAAuthentication yes
 PubkeyAuthentication yes
 ```
+
+- **Restart the SSH daemon, using either `systemd` or `sysvinit`:**
+```
+systemctl restart sshd.service
+```
+```
+service sshd restart
+```
+> Note that, depending on your operating system/distribution, the SSH daemon could potentially be named `ssh` and not `sshd`.
 
 ## Preparing the Script:
 
