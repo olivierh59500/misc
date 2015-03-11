@@ -69,7 +69,7 @@ visudo
 user ALL=(ALL) NOPASSWD: ALL
 ```
 
-- **Open `/etc/ssh/sshd_config` and ensure the following parameters are configured and uncommented:**
+- **Edit `/etc/ssh/sshd_config` and ensure the following parameters are configured and uncommented:**
 ```
 PermitRootLogin no
 PasswordAuthentication no
@@ -88,7 +88,7 @@ service sshd restart
 
 ## Preparing the Script:
 
-- **From within a shell, use `wget` or `curl` to download `replication.py`:**
+- **Log in as root and use `wget` or `curl` to download `replication.py`:**
 ```
 wget https://raw.githubusercontent.com/misterpeguero/misc/master/script/replication/replication.py
 ```
@@ -99,13 +99,13 @@ curl -O https://raw.githubusercontent.com/misterpeguero/misc/master/script/repli
 - **Modify file permissions and ownership:**
 ```
 chmod 500 replication.py
-chown user:user replication.py
+chown root:root replication.py
 ```
 
 - **Create a password file containing a password required for SMTP PLAIN authentication and modify its permissions and ownership:**
 ```
 chmod 400 password.txt
-chown user:user password.txt
+chown root:root password.txt
 ```
 
 - **Prior to the invocation of `replication.py`, ensure to specify the following parameters:**
@@ -120,24 +120,24 @@ Parameter                   | Type         | Example Value
 `--mail-smtp-server`        | String       | `smtp.domain.com`
 `--mail-smtp-user`          | String       | `sender@domain.com`
 `--mail-smtp-port`          | String       | `465`,`587`
-`--mail-smtp-password-file` | String       | `/home/user/password.txt`
+`--mail-smtp-password-file` | String       | `/root/password.txt`
 `--mail-recipient`          | String       | `recipient@domain.com`
 
 ## Results:
 
 - **Upon the invocation of `replication.py`, you will begin to notice output similar to the following example:**
 ```
-OK: Created (Required Script Subdirectory) - "/home/misterpeguero/replication_script/exclude"
-OK: Created (Required Script Subdirectory) - "/home/misterpeguero/replication_script/log"
+OK: Created (Required Script Subdirectory) - "/root/replication_script/exclude"
+OK: Created (Required Script Subdirectory) - "/root/replication_script/log"
 
 ---- FOO ----
 
 OK: Found (Directory) - "/foo"
-OK: Created (Exclude List) - "/home/misterpeguero/replication_script/exclude/_foo-machine.domain.com.conf"
+OK: Created (Exclude List) - "/root/replication_script/exclude/_foo-machine.domain.com.conf"
 
 ----
 
-Invoking Command: /usr/bin/rsync -avrtpzP --rsync-path="/usr/bin/sudo /usr/bin/rsync" -e "ssh -p 22" --delete --exclude-from="/home/misterpeguero/replication_script/exclude/_foo-machine.domain.com.conf" "/foo" user@machine.domain.com:"/bar/" --log-file="/home/misterpeguero/replication_script/log/machine.domain.com_2015-01-01_00-00-00.log"
+Invoking Command: /usr/bin/rsync -avrtpzP --rsync-path="/usr/bin/sudo /usr/bin/rsync" -e "ssh -p 22" --delete --exclude-from="/root/replication_script/exclude/_foo-machine.domain.com.conf" "/foo" user@machine.domain.com:"/bar/" --log-file="/root/replication_script/log/machine.domain.com_2015-01-01_00-00-00.log"
 
 sending incremental file list
 foo/file1.txt
@@ -168,13 +168,13 @@ Subject : Directory Replication [machine.domain.com_2015-01-01_00-00-00] (SUCCES
 Body    : Process completed successfully.
 ```
 
-- **And a new log file will be generated at `log/machine.domain.com_2015-01-01_00-00-00.log`.**
+- **And a new log file will be generated at `/root/replication_script/log/machine.domain.com_2015-01-01_00-00-00.log`.**
 
 ## Exclude Lists:
 
 In the previous output example, you may have noticed this particular message:
 ```
-OK: Created (Exclude List) - "/home/misterpeguero/replication_script/exclude/_foo-machine.domain.com.conf"
+OK: Created (Exclude List) - "/root/replication_script/exclude/_foo-machine.domain.com.conf"
 ```
 An exclude list configuration file makes use of rsync's `--exclude-from` parameter and is created whenever a source directory is specified. The purpose of this particular file is to exclude specific subdirectories and/or files from replication. In the case of this script, `_foo-machine.domain.com.conf` consists of a naming scheme that indicates its relation to its respective source directory, `/foo`, and the source directory's specified destination hostname, `machine.domain.com`. Underscores represent forward slashes, as well. To provide a simpler understanding of this explanation, here is a breakdown of the syntax in question:
 
