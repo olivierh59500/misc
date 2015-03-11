@@ -13,7 +13,7 @@ This was created out of mere desperation to modernize this very process that was
 4. [Results](#results)
 5. [Exclude Lists](#exclude-lists)
 6. [For Scheduled Use](#for-scheduled-use)
-  - [systemd-timer](#systemd-timer-linux)
+  - [systemd-timer (Linux)](#systemd-timer-linux)
   - [cron](#cron)
 7. [Conclusion](#conclusion)
 
