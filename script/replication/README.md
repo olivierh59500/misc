@@ -8,7 +8,12 @@ This was created out of mere desperation to modernize this very process that was
 
 ## Preparing the Source Client:
 
-- **Log in as root and create a new `.ssh` directory, if it does not already exist:**
+- **From a destination server, log in as root and create a new user that will be used for SSH key authentication:**
+```
+adduser user -m
+```
+
+- **From a source client, log in as root and create a new `.ssh` directory, if it does not already exist:**
 ```
 mkdir ~/.ssh
 ```
@@ -54,12 +59,12 @@ ssh-copy-id user@machine.domain.com
 
 ## Preparing the Destination Server:
 
-- **Log in as root and configure sudo access for the user that received the source client's SSH public key.**
+- **Log in as root and configure sudo access for `user`.**
 ```
 visudo
 ```
 
-- **Add the following entry and save this modification, allowing you to transfer permission and ownership information from files and directories from a source client:**
+- **Add the following entry and save it, allowing you to transfer permission and ownership information from files and directories from a source client:**
 ```
 user ALL=(ALL) NOPASSWD: ALL
 ```
