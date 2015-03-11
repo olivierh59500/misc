@@ -43,7 +43,7 @@ def main():
 			shutil.copy(file, file_targetDirectory)
 			print('OK: Copied "%s" to "%s".' % (file, file_targetDirectory))
 		
-		except OSError as why:
+		except Exception as why:
 			if why.args[0] == 1:
 				print('FAIL: Could not change owner of "%s" to root.' % (file), file=sys.stderr)
 			else:
@@ -69,7 +69,7 @@ def main():
 				grub_appendStatus = 0
 				print('OK: Appended "%s" to "%s" with a value of %s.' % (i, grub_configFile, grub_arguments_value))
 
-	except OSError as why:
+	except Exception as why:
 		exitStatus = 1
 		print('FAIL: Could not append "%s" to "%s" with a value of %s: %s.' % (i, grub_configFile, grub_arguments_value, why), file=sys.stderr)
 
