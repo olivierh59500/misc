@@ -32,11 +32,11 @@ ssh-keygen
 - **You will notice output similar to the following example:**
 ```
 Generating public/private rsa key pair.
-Enter file in which to save the key (/home/user/.ssh/id_rsa):
+Enter file in which to save the key (/root/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
-Your identification has been saved in /home/user/.ssh/id_rsa.
-Your public key has been saved in /home/user/.ssh/id_rsa.pub.
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
 The key fingerprint is:
 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00 root@machine.domain.com
 The key's randomart image is:
